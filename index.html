@@ -1,0 +1,188 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="robots" content="noindex, nofollow">
+<meta name="theme-color" content="#ffd84d">
+<title>우리 가족 한글날 여주 대작전 🎤</title>
+<meta property="og:title" content="우리 가족 한글날 여주 대작전">
+<meta property="og:description" content="늦어도 괜찮아! 순서만 바꾼 오늘 일정 · 흔한남매 토크쇼 작전">
+<link rel="manifest" href="manifest.webmanifest">
+<link rel="icon" href="icon.png">
+<link rel="apple-touch-icon" href="icon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Jua&family=Gowun+Dodum&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div id="sky" aria-hidden="true"></div>
+
+<header class="hero">
+  <div class="hero-letters" aria-hidden="true"><span>ㄱ</span><span>ㅎ</span><span>ㅏ</span><span>ㄴ</span><span>ㅡ</span><span>ㄹ</span><span>ㅣ</span><span>ㅁ</span></div>
+  <div class="hero-inner">
+    <div class="hero-badge">10월 9일(금) 한글날 · 여주</div>
+    <h1>우리 가족<br><span>한글날 대작전</span></h1>
+    <div class="hero-sub">세종대왕릉 🎤 흔한남매 · 🎀 티니핑 · 🍞 빵축제 · 🌉 출렁다리</div>
+  </div>
+</header>
+
+<main>
+  <!-- NOW -->
+  <section class="tab-page active" id="page-now">
+    <div class="card now-card" id="nowCard"></div>
+
+    <div class="card calm-card">
+      <h2>💛 엄마를 위한 30초 브리핑</h2>
+      <p class="calm-lead">늦어서 <b>버리는 일정은 없어요.</b><br>순서만 바꿨어요.</p>
+      <ul class="calm-list">
+        <li><b>오늘 꼭 지킬 것 딱 하나</b> → <span class="hl">1시(13:00)까지 공연장 도착</span> = 흔한남매 좋은 자리</li>
+        <li>티니핑은 <b>오후 4시에 한 번 더</b> 해요. 오전을 못 봐도 기회 있어요.</li>
+        <li>오전에 다들 티니핑 보러 가면 <b>체험 부스가 한산</b>해요. 오히려 이득!</li>
+        <li>빵축제는 저녁까지 해요. 늦게 가면 <b>노을 + 야간 공연</b>까지 볼 수 있어요.</li>
+      </ul>
+    </div>
+
+    <div class="card plan-card">
+      <h2>🔀 오늘 플랜 고르기</h2>
+      <div class="plan-switch" id="planSwitch"></div>
+      <div id="planWhy"></div>
+    </div>
+
+    <div class="card">
+      <h2>☀️ 여주 날씨</h2>
+      <div id="weather" class="weather"><div class="muted">날씨 불러오는 중…</div></div>
+    </div>
+
+    <div class="card">
+      <h2>🔁 원래 일정 vs 바뀐 일정</h2>
+      <div id="diff"></div>
+    </div>
+  </section>
+
+  <!-- PLAN -->
+  <section class="tab-page" id="page-plan">
+    <div class="plan-switch small" id="planSwitch2"></div>
+    <div class="timeline" id="timeline"></div>
+    <div class="card">
+      <h2>📞 전화 한 통으로 끝내기</h2>
+      <div id="calls"></div>
+      <p class="muted small">행사 정보 출처: 경인일보(2026.9.18)·기호일보(9.23)·연합뉴스(10.1) 기사. 현장 안내가 우선이에요.</p>
+    </div>
+  </section>
+
+  <!-- HEUNHAN -->
+  <section class="tab-page" id="page-hn">
+    <div class="card hn-hero">
+      <div class="hn-time">오후 2시 · 세종대왕릉 공연장</div>
+      <h2 class="hn-title">🎤 흔한남매 토크쇼 작전</h2>
+      <p>한글 퀴즈 · 관객 참여 게임 · 소통 레크리에이션 <span class="muted small">(선착순 무료)</span></p>
+      <div class="hn-count" id="hnCount"></div>
+    </div>
+
+    <div class="card">
+      <h2>⏱ 작전 시간표</h2>
+      <ol class="ops" id="ops"></ol>
+    </div>
+
+    <div class="card">
+      <h2>💺 자리 고르는 법</h2>
+      <div class="seat-map" aria-hidden="true">
+        <div class="stage">무 대</div>
+        <div class="rows" id="seatRows"></div>
+        <div class="seat-legend"><span class="lg good"></span>추천 (3~7번째 줄 · 가운데 · 통로 쪽)<br><span class="lg ok"></span>괜찮아요 <span class="lg meh"></span>피하기</div>
+      </div>
+      <ul class="tips">
+        <li><b>3~7번째 줄 가운데, 통로 쪽</b>이 베스트예요. 무대가 잘 보이고, 참여 게임 때 무대로 나가기 쉽고, 화장실 다녀오기도 편해요.</li>
+        <li><b>맨 앞 1~2줄은 피해요.</b> 무대가 높으면 고개가 아프고, 스피커 바로 앞이라 소리가 커요.</li>
+        <li>키 작은 동생은 <b>앞사람 머리 사이 빈 곳</b>이 보이는 자리에. 방석이나 접은 겉옷을 깔면 10cm 올라가요.</li>
+        <li>야외라면 <b>2시 해는 남서쪽</b>에 있어요. 아이들 얼굴에 해가 바로 비치는지 앉기 전에 확인하고 모자 챙기기 (자외선 보통~높음).</li>
+      </ul>
+    </div>
+
+    <div class="card">
+      <h2>🙋 무대에 뽑힐 확률 올리기</h2>
+      <ul class="tips">
+        <li><b>눈에 띄는 응원판</b>: 아래 📣 응원판 탭을 켜서 폰을 들면 멀리서도 보여요.</li>
+        <li><b>"저요!"는 크게, 손은 끝까지 번쩍.</b> 진행자는 앞쪽·통로·반응 큰 아이를 잘 골라요.</li>
+        <li><b>퀴즈는 미리 연습</b>: 🧠 퀴즈 탭에 한글날 퀴즈 15문제. 차 안에서 2시간 연습하면 정답 자신감 UP!</li>
+        <li>흔한남매는 <b>으뜸</b>이와 <b>에이미</b>예요. 이름 불러 주면 진짜 좋아해요.</li>
+      </ul>
+    </div>
+
+    <div class="card">
+      <h2>🧒 삼남매 역할 나누기</h2>
+      <div class="roles">
+        <div class="role"><div class="re">🧠</div><b>첫째</b><span>퀴즈 대장</span><small>정답 외치기 담당</small></div>
+        <div class="role"><div class="re">📣</div><b>둘째</b><span>응원판 대장</span><small>폰 응원판 들기</small></div>
+        <div class="role"><div class="re">👏</div><b>막내</b><span>박수 대장</span><small>제일 크게 박수!</small></div>
+      </div>
+    </div>
+
+    <div class="card">
+      <h2>🎒 공연장 가방</h2>
+      <div id="bag"></div>
+    </div>
+
+    <div class="card">
+      <h2>🙏 공연 매너 (아이들이랑 미리 약속)</h2>
+      <ul class="tips">
+        <li>공연 중엔 <b>일어서지 않기</b> (뒤에 동생들도 봐야 해요).</li>
+        <li>사진은 <b>가슴 높이</b>에서만, 플래시 끄기. 영상은 짧게 찍고 눈으로 보기!</li>
+        <li>바스락 소리 나는 과자 대신 젤리·물.</li>
+        <li>끝나면 바로 일어서지 말고 <b>5분 기다렸다 나가기</b> (인파 + 포토타임 있는지 확인).</li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- QUIZ -->
+  <section class="tab-page" id="page-quiz">
+    <div class="card quiz-card" id="quiz"></div>
+  </section>
+
+  <!-- CHEER -->
+  <section class="tab-page" id="page-cheer">
+    <div class="card">
+      <h2>📣 응원판</h2>
+      <p class="muted small">문구를 누르면 화면 가득 응원판이 떠요. 화면을 누르면 닫혀요. (폰 밝기 최대!)</p>
+      <div class="cheers" id="cheers"></div>
+      <div class="custom-cheer">
+        <input id="cheerInput" maxlength="20" placeholder="직접 쓰기 (예: 에이미 사랑해요)">
+        <button class="btn big" id="cheerGo">띄우기</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- STAMP -->
+  <section class="tab-page" id="page-stamp">
+    <div class="card">
+      <h2>⭐ 한글날 도장 깨기</h2>
+      <p class="muted small">해낸 미션을 꾹! (이 폰에 저장돼요)</p>
+      <div class="kid-tabs" id="kidTabs"></div>
+      <div class="stamp-progress" id="stampProgress"></div>
+      <div class="stamps" id="stamps"></div>
+    </div>
+    <div class="card diary">
+      <h2>✏️ 오늘의 한 줄</h2>
+      <p class="muted small">오늘 제일 재밌었던 순간을 적어요.</p>
+      <textarea id="diary" rows="3" placeholder="흔한남매가 우리한테 손 흔들어 줬다!"></textarea>
+    </div>
+  </section>
+</main>
+
+<nav class="bottom-nav" id="nav">
+  <button data-tab="now" class="active"><span>🏠</span>지금</button>
+  <button data-tab="plan"><span>🗓</span>일정</button>
+  <button data-tab="hn"><span>🎤</span>흔한남매</button>
+  <button data-tab="quiz"><span>🧠</span>퀴즈</button>
+  <button data-tab="cheer"><span>📣</span>응원판</button>
+  <button data-tab="stamp"><span>⭐</span>도장</button>
+</nav>
+
+<div id="board" class="board" hidden><div id="boardText"></div><small>화면을 누르면 닫혀요</small></div>
+<div id="confetti" aria-hidden="true"></div>
+
+<script src="app.js"></script>
+</body>
+</html>
